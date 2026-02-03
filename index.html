@@ -12,7 +12,7 @@
       overflow-x: hidden;
     }
 
-    /* ECG heartbeat line */
+    /* Neon ECG heartbeat line */
     .ecg {
       width: 100%;
       height: 150px;
@@ -20,22 +20,24 @@
       margin: 20px auto;
     }
     .heartbeat {
-      stroke: lime;
+      stroke: #00ff99; /* neon green */
       stroke-width: 2;
       fill: none;
       stroke-dasharray: 1000;
       stroke-dashoffset: 1000;
       animation: draw 4s linear infinite;
+      filter: drop-shadow(0 0 6px #00ff99);
     }
     @keyframes draw {
       to { stroke-dashoffset: 0; }
     }
 
-    /* Heart animation */
+    /* Pulsing neon hearts */
     .heart {
       font-size: 40px;
-      color: red;
+      color: #ff3366;
       animation: beat 1s infinite;
+      filter: drop-shadow(0 0 8px #ff3366);
     }
     @keyframes beat {
       0%, 100% { transform: scale(1); }
