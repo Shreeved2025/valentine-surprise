@@ -1,4 +1,63 @@
-<p>Hey Valentine 💖</p>
-<p>I made something special for you. Click below to see it:</p>
-<p><a href="https://shreeved2025.github.io/valentine-surprise/" target="_blank">Open Your Surprise</a></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Valentine Surprise</title>
+  <style>
+    body {
+      background: black;
+      color: magenta;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 50px;
+    }
+    .heart {
+      color: red;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    pre {
+      text-align: left;
+      display: inline-block;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    alert("💖 Surprise! Happy Valentine’s Day 💖");
+  </script>
 
+  <div class="heart">❤️ ❤️ ❤️</div>
+  <pre id="letter"></pre>
+
+  <script>
+    const text = `
+Dear My Sweet Valentine,
+
+You are the syntax to my soul,
+the logic that makes my heart run without errors.
+In the infinite loop of life, you are my break statement,
+the one who stops me from wandering endlessly.
+
+Every time I see you, my heart executes Happiness().
+Without you, my world would be null,
+but with you, it overflows with love.
+
+On this Valentine’s Day, I commit to keeping our love immutable,
+sealed against sorrow, and protected from exceptions.
+
+Forever yours,
+Your Eternal Programmer
+    `;
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("letter").textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+      }
+    }
+    typeWriter();
+  </script>
+</body>
+</html>
