@@ -12,26 +12,23 @@
       overflow-x: hidden;
     }
 
-    /* ECG line animation */
+    /* ECG heartbeat line */
     .ecg {
       width: 100%;
-      height: 100px;
-      background: transparent;
+      height: 150px;
       position: relative;
       margin: 20px auto;
     }
-    .line {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: lime;
-      animation: moveLine 2s linear infinite;
+    .heartbeat {
+      stroke: lime;
+      stroke-width: 2;
+      fill: none;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: draw 4s linear infinite;
     }
-    @keyframes moveLine {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
+    @keyframes draw {
+      to { stroke-dashoffset: 0; }
     }
 
     /* Heart animation */
@@ -113,10 +110,14 @@
     Your browser does not support the audio element.
   </audio>
 
-  <!-- ECG line with hearts -->
+  <!-- ECG heartbeat line -->
   <div class="ecg">
-    <div class="line"></div>
+    <svg viewBox="0 0 500 150" width="100%" height="150">
+      <path class="heartbeat" d="M0 75 L50 75 L70 20 L90 130 L110 75 L150 75 L170 40 L190 110 L210 75 L250 75 L270 20 L290 130 L310 75 L350 75 L370 40 L390 110 L410 75 L450 75 L500 75"/>
+    </svg>
   </div>
+
+  <!-- Pulsing hearts -->
   <div class="heart">❤️ ❤️ ❤️</div>
 
   <!-- Love letter -->
