@@ -26,24 +26,69 @@
       display: inline-block;
       color: white;
     }
+    /* Popup modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.7);
+    }
+    .modal-content {
+      background-color: #ffe6f0;
+      margin: 15% auto;
+      padding: 20px;
+      border-radius: 12px;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      color: #d6336c;
+      box-shadow: 0 0 20px pink;
+    }
+    .close-btn {
+      background-color: #d6336c;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 15px;
+    }
+    .close-btn:hover {
+      background-color: #a61c4d;
+    }
   </style>
 </head>
-<body>
-  <script>
-    alert("💖 Surprise! Happy Valentine’s Day 💖");
-  </script>
+<body onload="showModal()">
 
-  <!-- Background music -->
-  <audio autoplay loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+  <!-- Custom popup modal -->
+  <div id="valentineModal" class="modal">
+    <div class="modal-content">
+      <h2>💖 Surprise! 💖</h2>
+      <p>Happy Valentine’s Day, my love 🌹</p>
+      <button class="close-btn" onclick="closeModal()">Open Your Gift</button>
+    </div>
+  </div>
 
-  <div class="heart">❤️ ❤️ ❤️</div>
+  <div class="heart">❤️</div>
   <pre id="letter"></pre>
 
   <script>
-    const text = `
+    function showModal() {
+      document.getElementById("valentineModal").style.display = "block";
+    }
+    function closeModal() {
+      document.getElementById("valentineModal").style.display = "none";
+      startLetter();
+    }
+
+    function startLetter() {
+      const text = `
 Dear My Sweet Valentine,
 
 You are the syntax to my soul,
@@ -60,16 +105,17 @@ sealed against sorrow, and protected from exceptions.
 
 Forever yours,
 Your Eternal Programmer
-    `;
-    let i = 0;
-    function typeWriter() {
-      if (i < text.length) {
-        document.getElementById("letter").textContent += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 50);
+      `;
+      let i = 0;
+      function typeWriter() {
+        if (i < text.length) {
+          document.getElementById("letter").textContent += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, 50);
+        }
       }
+      typeWriter();
     }
-    typeWriter();
   </script>
 </body>
 </html>
