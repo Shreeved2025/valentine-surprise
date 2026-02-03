@@ -48,6 +48,20 @@
       font-family: Arial, sans-serif;
       color: #d6336c;
       box-shadow: 0 0 20px pink;
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    .animated-heart {
+      font-size: 50px;
+      color: red;
+      animation: beat 1s infinite;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.4); }
     }
     .close-btn {
       background-color: #d6336c;
@@ -69,11 +83,18 @@
   <!-- Custom popup modal -->
   <div id="valentineModal" class="modal">
     <div class="modal-content">
+      <div class="animated-heart">❤️</div>
       <h2>💖 Surprise! 💖</h2>
       <p>Happy Valentine’s Day, my love 🌹</p>
       <button class="close-btn" onclick="closeModal()">Open Your Gift</button>
     </div>
   </div>
+
+  <!-- Background music -->
+  <audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
   <div class="heart">❤️</div>
   <pre id="letter"></pre>
@@ -84,6 +105,7 @@
     }
     function closeModal() {
       document.getElementById("valentineModal").style.display = "none";
+      document.getElementById("bgMusic").play(); // start music
       startLetter();
     }
 
