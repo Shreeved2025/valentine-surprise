@@ -9,23 +9,49 @@
       font-family: monospace;
       text-align: center;
       padding-top: 50px;
+      overflow-x: hidden;
     }
+
+    /* ECG line animation */
+    .ecg {
+      width: 100%;
+      height: 100px;
+      background: transparent;
+      position: relative;
+      margin: 20px auto;
+    }
+    .line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: lime;
+      animation: moveLine 2s linear infinite;
+    }
+    @keyframes moveLine {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Heart animation */
     .heart {
-      color: red;
       font-size: 40px;
-      margin-bottom: 20px;
-      animation: pulse 1s infinite;
+      color: red;
+      animation: beat 1s infinite;
     }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.3); }
-      100% { transform: scale(1); }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.4); }
     }
+
     pre {
       text-align: left;
       display: inline-block;
       color: white;
+      margin-top: 20px;
     }
+
     /* Popup modal styles */
     .modal {
       display: none;
@@ -54,15 +80,6 @@
       from {opacity: 0;}
       to {opacity: 1;}
     }
-    .animated-heart {
-      font-size: 50px;
-      color: red;
-      animation: beat 1s infinite;
-    }
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.4); }
-    }
     .close-btn {
       background-color: #d6336c;
       color: white;
@@ -83,7 +100,7 @@
   <!-- Custom popup modal -->
   <div id="valentineModal" class="modal">
     <div class="modal-content">
-      <div class="animated-heart">❤️</div>
+      <div class="heart">❤️</div>
       <h2>💖 Surprise! 💖</h2>
       <p>Happy Valentine’s Day, my love 🌹</p>
       <button class="close-btn" onclick="closeModal()">Open Your Gift</button>
@@ -96,7 +113,13 @@
     Your browser does not support the audio element.
   </audio>
 
-  <div class="heart">❤️</div>
+  <!-- ECG line with hearts -->
+  <div class="ecg">
+    <div class="line"></div>
+  </div>
+  <div class="heart">❤️ ❤️ ❤️</div>
+
+  <!-- Love letter -->
   <pre id="letter"></pre>
 
   <script>
@@ -113,17 +136,15 @@
       const text = `
 Dear My Sweet Valentine,
 
-You are the syntax to my soul,
-the logic that makes my heart run without errors.
-In the infinite loop of life, you are my break statement,
-the one who stops me from wandering endlessly.
+You are the rhythm to my heartbeat,
+the spark that keeps my soul alive.
+Like an endless ECG line, my love for you
+beats strong and true, never fading.
 
-Every time I see you, my heart executes Happiness().
-Without you, my world would be null,
-but with you, it overflows with love.
-
-On this Valentine’s Day, I commit to keeping our love immutable,
-sealed against sorrow, and protected from exceptions.
+Every pulse reminds me of you,
+every heartbeat carries your name.
+On this Valentine’s Day, I promise
+to keep our love steady, eternal, and full of joy.
 
 Forever yours,
 Your Eternal Programmer
